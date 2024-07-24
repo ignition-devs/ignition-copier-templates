@@ -1,0 +1,100 @@
+name: pre-commit-autoupdate-templates
+
+on:
+  schedule:
+    - cron: '0 20 * * 1'
+  workflow_dispatch:
+
+jobs:
+  pre-commit-autoupdate:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        id: setup-python
+        with:
+          python-version: '3.12'
+
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          repository: coatl-dev/workflow-requirements
+          path: deps
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('deps/requirements/base.txt', 'deps/requirements/pre-commit.txt') }}
+
+      - name: Install pre-commit
+        run: |
+          python -m pip install --requirement deps/requirements/base.txt
+          python -m pip install --requirement deps/requirements/pre-commit.txt
+
+      - name: Update ignition-project
+        run: |
+          pre-commit autoupdate \
+            --repo https://github.com/aio-libs/sort-all \
+            --repo https://github.com/bwhmather/ssort \
+            --repo https://github.com/psf/black \
+            --repo https://github.com/PyCQA/isort \
+            --repo https://github.com/PyCQA/docformatter \
+            --repo https://github.com/PyCQA/pydocstyle
+        working-directory: ./ignition-project
+
+      - name: Update jython-package
+        run: |
+          pre-commit autoupdate \
+            --repo https://github.com/aio-libs/sort-all \
+            --repo https://github.com/bwhmather/ssort \
+            --repo https://github.com/psf/black \
+            --repo https://github.com/PyCQA/isort \
+            --repo https://github.com/PyCQA/docformatter \
+            --repo https://github.com/PyCQA/pydocstyle
+        working-directory: ./jython-package
+
+      - name: Update python2-package
+        run: |
+          pre-commit autoupdate \
+            --repo https://github.com/aio-libs/sort-all \
+            --repo https://github.com/bwhmather/ssort \
+            --repo https://github.com/psf/black \
+            --repo https://github.com/PyCQA/isort \
+            --repo https://github.com/PyCQA/docformatter \
+            --repo https://github.com/PyCQA/pydocstyle
+        working-directory: ./python2-package
+
+      - name: Update python3-stubs
+        run: |
+          pre-commit autoupdate
+        working-directory: ./python3-stubs
+
+      - name: Detect changes
+        id: git-diff
+        uses: coatl-dev/actions/simple-git-diff@v3
+
+      - name: Import GPG key
+        if: ${{ steps.git-diff.outputs.diff == 'true' }}
+        id: gpg-import
+        uses: coatl-dev/actions/gpg-import@v3
+        with:
+          passphrase: ${{ secrets.COATL_BOT_GPG_PASSPHRASE }}
+          private-key: ${{ secrets.COATL_BOT_GPG_PRIVATE_KEY }}
+
+      - name: Commit and push changes
+        if: ${{ steps.git-diff.outputs.diff == 'true' }}
+        run: |
+          git checkout -B coatl-dev-pre-commit-autoupdate
+          git add .pre-commit-config.yaml
+          git commit -m 'refactor(templates): pre-commit autoupdate'
+          git push --force --set-upstream origin coatl-dev-pre-commit-autoupdate
+
+      - name: Create Pull Request
+        if: ${{ steps.git-diff.outputs.diff == 'true' }}
+        uses: coatl-dev/actions/pr-create@v3
+        with:
+          gh-token: ${{ secrets.COATL_BOT_GH_TOKEN }}

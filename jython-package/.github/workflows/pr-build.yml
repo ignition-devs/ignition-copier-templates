@@ -1,0 +1,20 @@
+name: pr-build
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - requirements/dev.txt
+      - 'src/**'
+      - Makefile
+      - setup.py
+      - tox.ini
+
+jobs:
+  jython:
+    uses: ./.github/workflows/jython.yml
+
+  tox:
+    needs: jython
+    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v4

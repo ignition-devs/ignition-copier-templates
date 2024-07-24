@@ -1,0 +1,38 @@
+version: '1'
+
+ignore:
+  - .git
+  - venv
+  - .venv
+  - env
+  - .env
+  - .tox
+
+rule_settings:
+  enable:
+    - default
+  disable: []
+  rule_types:
+    - refactoring
+    - suggestion
+    - comment
+  python_version: '3.3'
+
+rules:
+  - id: no-print-statements
+    description: Do not use print statements in the src directory.
+    pattern: print
+    language: python
+    paths:
+      include:
+        - src
+    tests: []
+    tags: []
+
+metrics:
+  quality_threshold: 25.0
+
+clone_detection:
+  min_lines: 3
+  min_duplicates: 2
+  identical_clones_only: false

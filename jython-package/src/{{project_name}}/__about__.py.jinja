@@ -1,0 +1,13 @@
+# coding=utf-8
+"""Package information."""
+
+__title__ = "{{ project_name }}"
+__description__ = "{{ project_description }}"
+__url__ = "https://github.com/{{ github_org }}/{{ github_repo }}"
+__version__ = "0.0.1"
+__author__ = "{{ author_fullname }}"
+__author_email__ = "{{ author_email }}"
+{%- if project_license != 'None' %}
+__license__ = "{{ project_license }}"
+{%- endif %}
+__copyright__ = "Copyright (c) {{ copyright_holder }} 2024"

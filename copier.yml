@@ -1,0 +1,152 @@
+# questions
+project_type:
+  type: str
+  help: Select your project type.
+  choices:
+    Ignition project: ignition-project
+    Jython package: jython-package
+    Python 2 package: python2-package
+    Python 3 stubs: python3-stubs
+
+author_fullname:
+  type: str
+  help: What's your name?
+  validator: >-
+    {% if not author_fullname %}
+      Please provide your name.
+    {% endif %}
+
+author_email:
+  type: str
+  help: What's your email address?
+  validator: >-
+    {% if not (author_email | regex_search('(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)')) %}
+      Field must be a valid email address.
+    {% endif %}
+
+project_name:
+  type: str
+  help: Project name
+  validator: >-
+    {% if not (project_name | regex_search('^[a-z][a-z0-9\-]+$')) %}
+      Must start with a letter, followed one or more letters, digits or hyphens all lowercase.
+    {% endif %}
+
+project_description:
+  type: str
+  help: A short description of the project
+  validator: >-
+    {% if not project_description %}
+      Please provide a short description.
+    {% endif %}
+
+project_development_status:
+  type: str
+  help: What is the development status of this project?
+  default: 3 - Alpha
+  choices:
+    Planning: 1 - Planning
+    Pre-Alpha: 2 - Pre-Alpha
+    Alpha: 3 - Alpha
+    Beta: 4 - Beta
+    Stable: 5 - Production/Stable
+    Mature: 6 - Mature
+    Inactive: 7 - Inactive
+  when: "{{ project_type != 'ignition-project' }}"
+
+github_org:
+  type: str
+  help: Provide a GitHub username or organization.
+  validator: >-
+    {% if not (github_org | regex_search('(?i)^([A-Z0-9]|[A-Z0-9][A-Z0-9._-]*[A-Z0-9])$')) %}
+      The name may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.
+    {% endif %}
+
+github_repo:
+  type: str
+  help: Provide a GitHub repository name for your username or organization.
+  default: "{{ project_name }}"
+  validator: >-
+    {% if not (github_repo | regex_search('^[a-z][a-z0-9\-]+$')) %}
+      Must start with a letter, followed one or more letters, digits or hyphens all lowercase.
+    {% endif %}
+
+project_license:
+  type: str
+  help: Choose a license
+  default: MIT License
+  choices:
+    Apache: Apache Software License
+    GPLv3: GNU General Public License v3 (GPLv3)
+    ISC: ISC License (ISCL)
+    MIT: MIT License
+    None: None
+    Unlicense: Unlicense
+
+copyright_holder:
+  type: str
+  help: Who is the copyright holder?
+  default: "{{ author_fullname }}"
+  when: "{{ project_license not in ['None', 'Unlicense'] }}"
+
+copyright_year:
+  type: str
+  help: Copyright year(s)
+  default: 2024
+  when: "{{ project_license not in ['None', 'Unlicense'] }}"
+
+project_inheritable:
+  type: bool
+  help: Is this project inheritable?
+  default: yes
+  when: "{{ project_type == 'ignition-project' }}"
+
+use_sourcery:
+  type: bool
+  help: Use sourcery?
+  default: yes
+  when: "{{ project_type != 'python3-stubs' }}"
+
+upload_registry:
+  type: bool
+  help: Will this project be uploaded to a Python repository? (E.g. PyPI, Azure Artifacts)
+  default: "{{ project_license != 'None' }}"
+  when: "{{ project_type != 'ignition-project' }}"
+
+registry_url:
+  type: str
+  help: The repository (package index) URL to upload the package to.
+  default: https://upload.pypi.org/legacy/
+  when: "{{ upload_registry and project_type != 'ignition-project'}}"
+
+registry_username:
+  type: str
+  help: The username to authenticate to the repository (package index) as.
+  default: __token__
+  when: "{{ upload_registry and project_type != 'ignition-project' }}"
+
+use_devcontainer:
+  type: bool
+  help: Should this project use a devcontainer for development?
+  default: no
+  when: "{{ project_type == 'jython-package' or project_type == 'python2-package' }}"
+
+# Copier metadata
+_min_copier_version: "9"
+_subdirectory: "{{ project_type }}"
+_message_after_copy: |
+    Your project "{{ project_name }}" has been created successfully!
+
+    Next steps:
+
+    1. Change directory to the project root:
+
+      $ cd {{ _copier_conf.dst_path }}
+
+    2. Initialize your Git repository:
+
+      $ git init
+
+    3. Install the pre-commit script:
+
+      $ pre-commit install
