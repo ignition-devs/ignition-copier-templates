@@ -1,3 +1,9 @@
+## 0.0.3 (2024-08-21)
+
+### Refactor
+
+- **templates**: update devcontainer Dockerfiles (#5)
+
 ## 0.0.2 (2024-08-05)
 
 ### Refactor
