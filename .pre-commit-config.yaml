@@ -10,11 +10,11 @@ repos:
       - id: check-toml
       - id: check-yaml
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.29.2
+    rev: 0.29.3
     hooks:
       - id: check-github-workflows
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v3.29.0
+    rev: v3.29.1
     hooks:
       - id: commitizen
       - id: commitizen-branch
