@@ -1,6 +1,7 @@
 {
-  "name": "incendium",
+  "name": "jython-package",
   "build": {
+    "context": "..",
     "dockerfile": "Dockerfile"
   },
   "customizations": {
