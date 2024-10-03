@@ -1,3 +1,10 @@
+## 0.0.4 (2024-10-03)
+
+### Refactor
+
+- **templates**: move devcontainer files under .devcontainer directory (#9)
+- **templates**: update pylint configuration file (#8)
+
 ## 0.0.3 (2024-08-21)
 
 ### Refactor
