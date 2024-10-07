@@ -1,3 +1,9 @@
+## 0.0.6 (2024-10-07)
+
+### Refactor
+
+- **jython**: update CI workflows (#11)
+
 ## 0.0.5 (2024-10-07)
 
 ### Refactor
