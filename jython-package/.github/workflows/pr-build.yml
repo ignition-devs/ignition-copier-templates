@@ -5,9 +5,10 @@ on:
     branches:
       - main
     paths:
-      - requirements/dev.txt
+      - '.github/workflows/pr-build.yml'
       - 'src/**'
       - Makefile
+      - requirements.txt
       - setup.py
       - tox.ini
 
