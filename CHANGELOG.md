@@ -1,3 +1,9 @@
+## 0.0.5 (2024-10-07)
+
+### Refactor
+
+- **templates**: prepare for Python 3.13 (#10)
+
 ## 0.0.4 (2024-10-03)
 
 ### Refactor
