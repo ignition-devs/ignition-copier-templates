@@ -1,3 +1,9 @@
+## 0.0.8 (2024-10-28)
+
+### Refactor
+
+- update pylint condiguration files (#18)
+
 ## 0.0.7 (2024-10-21)
 
 ### Refactor
