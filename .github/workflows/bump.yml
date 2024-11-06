@@ -32,9 +32,5 @@ jobs:
       - run: |
           cz bump
 
-      - uses: coatl-dev/actions/simple-git-diff@v3
-        id: git-diff
-
-      - if: ${{ steps.git-diff.outputs.diff == 'true' }}
-        run: |
+      - run: |
           git push origin HEAD --tags
