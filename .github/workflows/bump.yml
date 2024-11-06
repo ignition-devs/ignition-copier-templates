@@ -1,17 +1,19 @@
+name: bump
+
 on:
   push:
     branches:
       - main
 
 jobs:
-  bump-version:
+  bump:
     if: ${{ ! startsWith(github.event.head_commit.message, 'bump:') }}
     runs-on: ubuntu-latest
     steps:
-      - name: Check out
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.COATL_BOT_GH_TOKEN }}
 
       - uses: coatl-dev/actions/gpg-import@v3
         id: gpg-import
@@ -21,4 +23,10 @@ jobs:
 
       - uses: commitizen-tools/commitizen-action@0.21.0
         with:
-          github_token: ${{ secrets.COATL_BOT_GH_TOKEN }}
+          push: false
+        env:
+          PIP_NO_CACHE_DIR: 1
+          PIP_ROOT_USER_ACTION: ignore
+
+      - run: |
+          git push origin HEAD --tags
