@@ -24,6 +24,9 @@ jobs:
       - uses: commitizen-tools/commitizen-action@0.21.0
         with:
           push: false
+          git_email: ${{ steps.gpg-import.outputs.git-user-email }}
+          git_name: ${{ steps.gpg-import.outputs.git-user-name }}
+          gpg_sign: true
         env:
           PIP_NO_CACHE_DIR: 1
           PIP_ROOT_USER_ACTION: ignore
