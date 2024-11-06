@@ -23,18 +23,17 @@ jobs:
       - run: |
           python -m pip install commitizen
 
+      - uses: coatl-dev/actions/gpg-import@v3
+        id: gpg-import
+        with:
+          passphrase: ${{ secrets.COATL_BOT_GPG_PASSPHRASE }}
+          private-key: ${{ secrets.COATL_BOT_GPG_PRIVATE_KEY }}
+
       - run: |
           cz bump
 
       - uses: coatl-dev/actions/simple-git-diff@v3
         id: git-diff
-
-      - uses: coatl-dev/actions/gpg-import@v3
-        if: ${{ steps.git-diff.outputs.diff == 'true' }}
-        id: gpg-import
-        with:
-          passphrase: ${{ secrets.COATL_BOT_GPG_PASSPHRASE }}
-          private-key: ${{ secrets.COATL_BOT_GPG_PRIVATE_KEY }}
 
       - if: ${{ steps.git-diff.outputs.diff == 'true' }}
         run: |
