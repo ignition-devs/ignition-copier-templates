@@ -1,5 +1,3 @@
-name: pre-commit-autoupdate-templates
-
 on:
   schedule:
     - cron: '0 20 * * 1'
