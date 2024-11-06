@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'ignition-project/**'
+      - 'jython-package/**'
+      - 'python2-package/**'
+      - 'python3-stubs/**'
 
 jobs:
   bump:
