@@ -2,25 +2,24 @@ name: release
 
 on:
   push:
-    tags:
-      - '*.*.*'
+    branches:
+      - main
 
 jobs:
-
   release:
-    if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
+    if: ${{ startsWith(github.event.head_commit.message, 'bump:') }}
     runs-on: ubuntu-latest
-    name: "Release"
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          fetch-tags: true
+          token: ${{ secrets.COATL_BOT_GH_TOKEN }}
 
       - run: |
-          TAG_NAME=${GITHUB_REF#refs/tags/}
+          TAG=$(git describe --tags --abbrev=0)
           gh release create "$TAG" \
             --title "$TAG" \
             --generate-notes
         env:
-          TAG: ${{ github.ref_name }}
           GITHUB_TOKEN: ${{ secrets.COATL_BOT_GH_TOKEN }}
