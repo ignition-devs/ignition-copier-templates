@@ -15,10 +15,14 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.COATL_BOT_GH_TOKEN }}
 
+      - id: tag
+        run: |
+          echo "tag=$(git describe --tags --abbrev=0)" >> $GITHUB_OUTPUT
+
       - run: |
-          TAG=$(git describe --tags --abbrev=0)
           gh release create "$TAG" \
             --title "$TAG" \
             --generate-notes
         env:
+          TAG: ${{ steps.tag.outputs.tag }}
           GITHUB_TOKEN: ${{ secrets.COATL_BOT_GH_TOKEN }}
