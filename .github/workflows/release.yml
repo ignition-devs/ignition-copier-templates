@@ -21,7 +21,6 @@ jobs:
 
       - run: |
           gh release create "$TAG" \
-            --title "$TAG" \
             --generate-notes
         env:
           TAG: ${{ steps.tag.outputs.tag }}
