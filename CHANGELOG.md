@@ -1,3 +1,9 @@
+## 0.0.11 (2025-01-08)
+
+### Refactor
+
+- **templates**: use coatl-dev/docformatter pre-commit hook (#37)
+
 ## 0.0.10 (2024-11-06)
 
 ### Refactor
