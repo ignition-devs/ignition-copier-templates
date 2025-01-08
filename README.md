@@ -6,7 +6,7 @@ ignition-devs [copier] templates for Ignition projects.
 
 - Git
 - [Python 2.7.18] (for `jython-package` and `python2-package`)
-- [Python 3.12]
+- Python 3.12 (for [mypy])
 - [copier]
 
   ```sh
@@ -17,6 +17,7 @@ ignition-devs [copier] templates for Ignition projects.
 
 ### ignition-project
 
+- Automated code checks before committing to version control using [pre-commit]
 - Pre-configured tools for code formatting, quality analysis and testing:
   - [black]
   - [docformatter]
@@ -32,6 +33,7 @@ ignition-devs [copier] templates for Ignition projects.
 
 ### jython-package
 
+- Automated code checks before committing to version control using [pre-commit]
 - Pre-configured tools for code formatting, quality analysis and testing:
   - [black]
   - [docformatter]
@@ -48,6 +50,7 @@ ignition-devs [copier] templates for Ignition projects.
 
 ### python2-package
 
+- Automated code checks before committing to version control using [pre-commit]
 - Pre-configured tools for code formatting, quality analysis and testing:
   - [black]
   - [docformatter]
@@ -64,6 +67,7 @@ ignition-devs [copier] templates for Ignition projects.
 
 ### python3-stubs
 
+- Automated code checks before committing to version control using [pre-commit]
 - Pre-configured tools for code formatting, quality analysis and testing:
   - [black]
   - [docformatter]
@@ -96,7 +100,6 @@ copier update --defaults
 [copier]: https://copier.readthedocs.io/en/stable/
 [Jython 2.7.3]: https://repo1.maven.org/maven2/org/python/jython-installer/2.7.3/
 [Python 2.7.18]: https://www.python.org/downloads/release/python-2718/
-[Python 3.12]: https://www.python.org/downloads/release/python-3214/
 <!-- Tools -->
 [black]: https://black.readthedocs.io/en/stable/
 [docformatter]: https://docformatter.readthedocs.io/en/stable/
@@ -104,6 +107,7 @@ copier update --defaults
 [isort]: https://pycqa.github.io/isort/
 [make]: https://www.gnu.org/software/make/
 [mypy]: https://coatl-mypy.readthedocs.io/en/v0.971/
+[pre-commit]: https://pre-commit.com/
 [pydocstyle]: https://www.pydocstyle.org/en/6.3.0/
 [pylint]: https://pylint.readthedocs.io/en/stable/
 [sort-all]: https://github.com/aio-libs/sort-all
