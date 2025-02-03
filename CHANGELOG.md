@@ -1,3 +1,9 @@
+## 0.0.12 (2025-02-03)
+
+### Refactor
+
+- **templates**: pre-commit autoupdate (#40)
+
 ## 0.0.11 (2025-01-08)
 
 ### Refactor
