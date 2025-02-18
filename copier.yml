@@ -92,7 +92,7 @@ copyright_holder:
 copyright_year:
   type: str
   help: Copyright year(s)
-  default: 2024
+  default: $current_year
   when: "{{ project_license not in ['None', 'Unlicense'] }}"
 
 project_inheritable:
