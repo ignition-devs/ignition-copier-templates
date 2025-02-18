@@ -1,4 +1,4 @@
-name: pre-commit-autoupdate-templates
+name: autoupdate
 
 on:
   schedule:
@@ -23,6 +23,14 @@ jobs:
         with:
           repository: coatl-dev/workflow-requirements
           path: deps
+
+      - name: Update copyright year
+        run: |
+          current_year=$(date +'%Y')
+
+          echo "current_year: $current_year"
+
+          sed -i 's/default: [0-9]\{4\}/default: $current_year' copier.yml
 
       - name: Cache pip
         uses: actions/cache@v4
