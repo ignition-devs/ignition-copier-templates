@@ -3,6 +3,7 @@ name: autoupdate
 on:
   schedule:
     - cron: '0 20 * * 1'
+    - cron: '0 0 1 1 *'
   workflow_dispatch:
 
 jobs:
@@ -25,6 +26,7 @@ jobs:
           path: deps
 
       - name: Update copyright year
+        if: ${{ github.event.schedule == '0 0 1 1 *' }}
         run: |
           current_year=$(date +'%Y')
 
