@@ -1,3 +1,9 @@
+## 0.0.17 (2025-05-08)
+
+### Refactor
+
+- **templates**: use PyCQA/docformatter@v1.7.6 (#54)
+
 ## 0.0.16 (2025-03-31)
 
 ### Refactor
