@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - 'src/**'
-      - 'tests/**'
+      - src/**
+      - tests/**
       - pyproject.toml
       - requirements.txt
       - setup.cfg
