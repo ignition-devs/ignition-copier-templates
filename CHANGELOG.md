@@ -1,3 +1,9 @@
+## 0.0.18 (2025-05-09)
+
+### Refactor
+
+- **templates**: fix glob pattern on ci (#56)
+
 ## 0.0.17 (2025-05-08)
 
 ### Refactor
