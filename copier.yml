@@ -74,26 +74,26 @@ github_repo:
 project_license:
   type: str
   help: Choose a license
-  default: MIT License
+  default: MIT
   choices:
-    Apache: Apache Software License
-    GPLv3: GNU General Public License v3 (GPLv3)
-    ISC: ISC License (ISCL)
-    MIT: MIT License
-    None: None
+    Apache-2.0: Apache-2.0
+    GPL-3.0: GPL-3.0
+    ISC: ISC
+    MIT: MIT
+    Proprietary: LicenseRef-Proprietary
     Unlicense: Unlicense
 
 copyright_holder:
   type: str
   help: Who is the copyright holder?
   default: "{{ author_fullname }}"
-  when: "{{ project_license not in ['None', 'Unlicense'] }}"
+  when: "{{ project_license not in ['Unlicense'] }}"
 
 copyright_year:
   type: str
   help: Copyright year(s)
-  default: $current_year
-  when: "{{ project_license not in ['None', 'Unlicense'] }}"
+  default: 2025
+  when: "{{ project_license not in ['Unlicense'] }}"
 
 project_inheritable:
   type: bool
@@ -110,7 +110,7 @@ use_sourcery:
 upload_registry:
   type: bool
   help: Will this project be uploaded to a Python repository? (E.g. PyPI, Azure Artifacts)
-  default: "{{ project_license != 'None' }}"
+  default: "{{ project_license != 'LicenseRef-Proprietary' }}"
   when: "{{ project_type != 'ignition-project' }}"
 
 registry_url:
