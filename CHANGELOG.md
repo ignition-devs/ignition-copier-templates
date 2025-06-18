@@ -1,3 +1,9 @@
+## 0.0.21 (2025-06-18)
+
+### Refactor
+
+- use valid SPDX license expression (#63)
+
 ## 0.0.20 (2025-06-16)
 
 ### Refactor
