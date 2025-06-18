@@ -7,11 +7,11 @@ on:
 
 jobs:
   tox:
-    uses: coatl-dev/workflows/.github/workflows/tox.yml@v4
+    uses: coatl-dev/workflows/.github/workflows/tox.yml@v5
 
   pypi-publish:
     needs: tox
-    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v4
+    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v5
     {%- if registry_url != 'https://upload.pypi.org/legacy/' or registry_username != '__token__' %}
     with:
       {%- if registry_url != 'https://upload.pypi.org/legacy/' %}
