@@ -25,7 +25,7 @@ repos:
     hooks:
       - id: docformatter
         args: [--in-place, --close-quotes-on-newline, --wrap-summaries=72]
-  - repo: https://github.com/PyCQA/flake8
+  - repo: https://github.com/coatl-dev/flake8
     rev: 5.0.4
     hooks:
       - id: flake8
