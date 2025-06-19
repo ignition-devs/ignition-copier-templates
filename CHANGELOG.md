@@ -1,3 +1,9 @@
+## 0.0.22 (2025-06-19)
+
+### Refactor
+
+- use coatl-dev/flake8@5.0.4 pre-commit hook (#64)
+
 ## 0.0.21 (2025-06-18)
 
 ### Refactor
