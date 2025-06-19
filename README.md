@@ -21,12 +21,14 @@ ignition-devs [copier] templates for Ignition projects.
 - Pre-configured tools for code formatting, quality analysis and testing:
   - [black]
   - [docformatter]
-  - [flake8]
+  - [coatl-dev/flake8]
   - [isort]
+  - [pydoclint]
   - [pydocstyle]
   - [pylint]
   - [sort-all]
   - [ssort]
+  - [unimport]
 - Tests run with [sourcery] and [tox]
 - [Python 2.7.18]
 - Auto-generated `CHANGELOG.md` from git commits using [commitizen]
@@ -37,13 +39,14 @@ ignition-devs [copier] templates for Ignition projects.
 - Pre-configured tools for code formatting, quality analysis and testing:
   - [black]
   - [docformatter]
-  - [flake8]
+  - [coatl-dev/flake8]
   - [isort]
-  - [mypy]
+  - [pydoclint]
   - [pydocstyle]
   - [pylint]
   - [sort-all]
   - [ssort]
+  - [unimport]
 - Tests run with [sourcery], [tox] and [make]
 - [Jython 2.7.3], [Python 2.7.18]
 - Auto-generated `CHANGELOG.md` from git commits using [commitizen]
@@ -54,13 +57,14 @@ ignition-devs [copier] templates for Ignition projects.
 - Pre-configured tools for code formatting, quality analysis and testing:
   - [black]
   - [docformatter]
-  - [flake8]
+  - [coatl-dev/flake8]
   - [isort]
-  - [mypy]
+  - [pydoclint]
   - [pydocstyle]
   - [pylint]
   - [sort-all]
   - [ssort]
+  - [unimport]
 - Tests run with [sourcery] and [tox]
 - [Python 2.7.18]
 - Auto-generated `CHANGELOG.md` from git commits using [commitizen]
@@ -70,10 +74,8 @@ ignition-devs [copier] templates for Ignition projects.
 - Automated code checks before committing to version control using [pre-commit]
 - Pre-configured tools for code formatting, quality analysis and testing:
   - [black]
-  - [docformatter]
   - [flake8]
   - [isort]
-  - [mypy]
 - Tests run with [tox]
 - Python 3.12
 - Auto-generated `CHANGELOG.md` from git commits using [commitizen]
@@ -102,15 +104,18 @@ copier update --defaults
 [Python 2.7.18]: https://www.python.org/downloads/release/python-2718/
 <!-- Tools -->
 [black]: https://black.readthedocs.io/en/stable/
+[coatl-dev/flake8]: https://flake8.pycqa.org/en/5.0.4/
 [docformatter]: https://docformatter.readthedocs.io/en/stable/
-[flake8]: https://flake8.pycqa.org/en/5.0.4/
+[flake8]: https://flake8.pycqa.org/en/stable/
 [isort]: https://pycqa.github.io/isort/
 [make]: https://www.gnu.org/software/make/
 [mypy]: https://coatl-mypy.readthedocs.io/en/v0.971/
 [pre-commit]: https://pre-commit.com/
+[pydoclint]: https://github.com/jsh9/pydoclint
 [pydocstyle]: https://www.pydocstyle.org/en/6.3.0/
 [pylint]: https://pylint.readthedocs.io/en/stable/
 [sort-all]: https://github.com/aio-libs/sort-all
 [sourcery]: https://docs.sourcery.ai/About-Sourcery/
 [ssort]: https://github.com/bwhmather/ssort
 [tox]: https://tox.wiki/
+[unimport]: https://github.com/hakancelikdev/unimport
