@@ -14,14 +14,14 @@ on:
 jobs:
   bump:
     if: ${{ ! startsWith(github.event.head_commit.message, 'bump:') }}
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.COATL_BOT_GH_TOKEN }}
 
-      - uses: actions/setup-python@v5
+      - uses: useblacksmith/setup-python@v6
         id: setup-python
         with:
           python-version: '3.13'
@@ -33,7 +33,7 @@ jobs:
           path: deps
 
       - name: Cache pip
-        uses: actions/cache@v4
+        uses: useblacksmith/cache@v5
         with:
           path: ~/.cache/pip
           key: pip-${{ steps.setup-python.outputs.python-version }}-${{ runner.os }}-${{ hashFiles('deps/requirements/commitizen.txt') }}
