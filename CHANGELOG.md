@@ -1,3 +1,9 @@
+## 0.0.24 (2025-06-29)
+
+### Refactor
+
+- **ci**: bump coatl-dev/workflows from v5 to v6 (#67)
+
 ## 0.0.23 (2025-06-23)
 
 ### Refactor
