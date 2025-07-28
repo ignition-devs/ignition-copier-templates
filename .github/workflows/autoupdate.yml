@@ -46,17 +46,38 @@ jobs:
 
       - name: Update ignition-project
         run: |
-          pre-commit autoupdate
+          pre-commit autoupdate \
+            --repo https://github.com/aio-libs/sort-all \
+            --repo https://github.com/bwhmather/ssort \
+            --repo https://github.com/psf/black \
+            --repo https://github.com/hakancelikdev/unimport \
+            --repo https://github.com/PyCQA/isort \
+            --repo https://github.com/PyCQA/pydocstyle \
+            --repo https://github.com/jsh9/pydoclint
         working-directory: ignition-project
 
       - name: Update jython-package
         run: |
-          pre-commit autoupdate
+          pre-commit autoupdate \
+            --repo https://github.com/aio-libs/sort-all \
+            --repo https://github.com/bwhmather/ssort \
+            --repo https://github.com/psf/black \
+            --repo https://github.com/hakancelikdev/unimport \
+            --repo https://github.com/PyCQA/isort \
+            --repo https://github.com/PyCQA/pydocstyle \
+            --repo https://github.com/jsh9/pydoclint
         working-directory: jython-package
 
       - name: Update python2-package
         run: |
-          pre-commit autoupdate
+          pre-commit autoupdate \
+            --repo https://github.com/aio-libs/sort-all \
+            --repo https://github.com/bwhmather/ssort \
+            --repo https://github.com/psf/black \
+            --repo https://github.com/hakancelikdev/unimport \
+            --repo https://github.com/PyCQA/isort \
+            --repo https://github.com/PyCQA/pydocstyle \
+            --repo https://github.com/jsh9/pydoclint
         working-directory: python2-package
 
       - name: Update python3-stubs
