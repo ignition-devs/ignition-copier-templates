@@ -16,7 +16,7 @@ jobs:
     if: ${{ ! startsWith(github.event.head_commit.message, 'bump:') }}
     runs-on: blacksmith-2vcpu-ubuntu-2404
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
           token: ${{ secrets.COATL_BOT_GH_TOKEN }}
@@ -27,7 +27,7 @@ jobs:
           python-version: '3.13'
 
       - name: Checkout requirements repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: coatl-dev/workflow-requirements
           path: deps
