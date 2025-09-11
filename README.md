@@ -19,17 +19,15 @@ ignition-devs [copier] templates for Ignition projects.
 
 - Automated code checks before committing to version control using [pre-commit]
 - Pre-configured tools for code formatting, quality analysis and testing:
-  - [black]
   - [docformatter]
-  - [coatl-dev/flake8]
+  - [coatl-dev/flake8] + [pydoclint]
   - [isort]
-  - [pydoclint]
-  - [pydocstyle]
   - [pylint]
+  - [ruff]
   - [sort-all]
   - [ssort]
   - [unimport]
-- Tests run with [sourcery] and [tox]
+- Tests run with [sourcery]
 - [Python 2.7.18]
 - Auto-generated `CHANGELOG.md` from git commits using [commitizen]
 
@@ -39,9 +37,8 @@ ignition-devs [copier] templates for Ignition projects.
 - Pre-configured tools for code formatting, quality analysis and testing:
   - [black]
   - [docformatter]
-  - [coatl-dev/flake8]
+  - [coatl-dev/flake8] + [pydoclint]
   - [isort]
-  - [pydoclint]
   - [pydocstyle]
   - [pylint]
   - [sort-all]
@@ -57,9 +54,8 @@ ignition-devs [copier] templates for Ignition projects.
 - Pre-configured tools for code formatting, quality analysis and testing:
   - [black]
   - [docformatter]
-  - [coatl-dev/flake8]
+  - [coatl-dev/flake8] + [pydoclint]
   - [isort]
-  - [pydoclint]
   - [pydocstyle]
   - [pylint]
   - [sort-all]
@@ -114,6 +110,7 @@ copier update --defaults
 [pydoclint]: https://github.com/jsh9/pydoclint
 [pydocstyle]: https://www.pydocstyle.org/en/6.3.0/
 [pylint]: https://pylint.readthedocs.io/en/stable/
+[ruff]: https://docs.astral.sh/ruff/
 [sort-all]: https://github.com/aio-libs/sort-all
 [sourcery]: https://docs.sourcery.ai/About-Sourcery/
 [ssort]: https://github.com/bwhmather/ssort
