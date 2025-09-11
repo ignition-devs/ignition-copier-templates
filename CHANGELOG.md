@@ -1,3 +1,9 @@
+## 0.1.2 (2025-09-11)
+
+### Refactor
+
+- rename devcontainer file (#82)
+
 ## 0.1.1 (2025-09-11)
 
 ### Refactor
