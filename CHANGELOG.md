@@ -1,3 +1,9 @@
+## 0.1.3 (2025-09-11)
+
+### Refactor
+
+- **build**: update pre-commit configuration (#83)
+
 ## 0.1.2 (2025-09-11)
 
 ### Refactor
