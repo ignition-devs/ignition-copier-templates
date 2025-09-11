@@ -2,19 +2,19 @@ name: autoupdate
 
 on:
   schedule:
-    - cron: '0 20 * * 1'
+    - cron: '0 20 28 * *'
     - cron: '0 0 1 1 *'
   workflow_dispatch:
 
 jobs:
   autoupdate:
-    runs-on: blacksmith-2vcpu-ubuntu-2404
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: useblacksmith/setup-python@v6
+        uses: actions/setup-python@v6
         id: setup-python
         with:
           python-version: '3.13'
@@ -35,7 +35,7 @@ jobs:
           sed -i "s/default: [0-9]\{4\}/default: $current_year/" copier.yml
 
       - name: Cache pip
-        uses: useblacksmith/cache@v5
+        uses: actions/cache@v4
         with:
           path: ~/.cache/pip
           key: pip-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('deps/requirements/pre-commit.txt') }}
@@ -46,38 +46,17 @@ jobs:
 
       - name: Update ignition-project
         run: |
-          pre-commit autoupdate \
-            --repo https://github.com/aio-libs/sort-all \
-            --repo https://github.com/bwhmather/ssort \
-            --repo https://github.com/psf/black \
-            --repo https://github.com/hakancelikdev/unimport \
-            --repo https://github.com/PyCQA/isort \
-            --repo https://github.com/PyCQA/pydocstyle \
-            --repo https://github.com/jsh9/pydoclint
+          pre-commit autoupdate
         working-directory: ignition-project
 
       - name: Update jython-package
         run: |
-          pre-commit autoupdate \
-            --repo https://github.com/aio-libs/sort-all \
-            --repo https://github.com/bwhmather/ssort \
-            --repo https://github.com/psf/black \
-            --repo https://github.com/hakancelikdev/unimport \
-            --repo https://github.com/PyCQA/isort \
-            --repo https://github.com/PyCQA/pydocstyle \
-            --repo https://github.com/jsh9/pydoclint
+          pre-commit autoupdate
         working-directory: jython-package
 
       - name: Update python2-package
         run: |
-          pre-commit autoupdate \
-            --repo https://github.com/aio-libs/sort-all \
-            --repo https://github.com/bwhmather/ssort \
-            --repo https://github.com/psf/black \
-            --repo https://github.com/hakancelikdev/unimport \
-            --repo https://github.com/PyCQA/isort \
-            --repo https://github.com/PyCQA/pydocstyle \
-            --repo https://github.com/jsh9/pydoclint
+          pre-commit autoupdate
         working-directory: python2-package
 
       - name: Update python3-stubs

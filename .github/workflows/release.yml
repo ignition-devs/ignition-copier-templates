@@ -8,7 +8,7 @@ on:
 jobs:
   release:
     if: ${{ startsWith(github.event.head_commit.message, 'bump:') }}
-    runs-on: blacksmith-2vcpu-ubuntu-2404
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
         with:
