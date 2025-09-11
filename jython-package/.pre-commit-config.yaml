@@ -29,14 +29,11 @@ repos:
     rev: 5.0.4
     hooks:
       - id: flake8
+        additional_dependencies: [pydoclint]
   - repo: https://github.com/PyCQA/pydocstyle
     rev: 6.3.0
     hooks:
       - id: pydocstyle
-  - repo: https://github.com/jsh9/pydoclint
-    rev: 0.7.3
-    hooks:
-      - id: pydoclint-flake8
   - repo: local
     hooks:
       - id: pylint
