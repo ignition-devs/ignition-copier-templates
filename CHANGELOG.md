@@ -1,3 +1,9 @@
+## 0.1.9 (2025-11-28)
+
+### Refactor
+
+- **templates**: use pylint version 4.0.3 to generate rcfile (#96)
+
 ## 0.1.8 (2025-11-28)
 
 ### Refactor
